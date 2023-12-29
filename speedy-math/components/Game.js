@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { nanoid } from 'nanoid';
+import {useEffect, useState} from 'react';
+import {nanoid} from 'nanoid';
 
 const Game = ({gameSettings}) => {
     const [score, setScore] = useState(0);
@@ -22,16 +22,17 @@ const Game = ({gameSettings}) => {
 
         console.log('Selected Operation:', selectedOperation);
 
-        let num1 = Math.floor(Math.random() * 10);
-        let num2 = Math.floor(Math.random() * 10);
-
-        let answer;
+        let num1, num2, answer;
 
         switch (selectedOperation) {
             case 'addition':
+                num1 = Math.floor(Math.random() * 90) + 10;
+                num2 = Math.floor(Math.random() * 90) + 10;
                 answer = num1 + num2;
                 break;
             case 'subtraction':
+                num1 = Math.floor(Math.random() * 90) + 10;
+                num2 = Math.floor(Math.random() * 90) + 10;
                 const maxNum = Math.max(num1, num2);
                 const minNum = Math.min(num1, num2);
                 num1 = maxNum;
@@ -39,14 +40,19 @@ const Game = ({gameSettings}) => {
                 answer = num1 - num2;
                 break;
             case 'multiplication':
+                num1 = Math.floor(Math.random() * 90) + 10; // Two-digit number
+                num2 = Math.floor(Math.random() * 12) + 1; // Random number from 1 to 12
                 answer = num1 * num2;
                 break;
             case 'division':
-                // Ensure non-zero denominator for division
-                const nonZeroNum2 = num2 !== 0 ? num2 : 1;
-                answer = num1 / nonZeroNum2;
+                num1 = Math.floor(Math.random() * 90) + 10; // Two-digit number
+                num2 = Math.floor(Math.random() * 12) + 1; // Random number from 1 to 12
+                answer = num1;
+                num1 = num1 * num2; // Inverse of multiplication
                 break;
             default:
+                num1 = Math.floor(Math.random() * 90) + 10; // Two-digit number
+                num2 = Math.floor(Math.random() * 90) + 10;
                 answer = num1 + num2; // Default to addition
         }
 
