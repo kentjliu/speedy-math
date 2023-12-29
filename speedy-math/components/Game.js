@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {nanoid} from 'nanoid';
 
-const Game = ({gameSettings}) => {
+const Game = ({gameSettings, onGoHome}) => {
     const [score, setScore] = useState(0);
     const [time, setTime] = useState(gameSettings.time); // Reduced time for testing
     const [inputValue, setInputValue] = useState('');
@@ -106,13 +106,21 @@ const Game = ({gameSettings}) => {
         setGameOver(false);
     };
 
+    const handleGoHome = () => {
+        // Call the provided onGoHome function to navigate to the landing page
+        onGoHome();
+    };
+
     if (gameOver) {
         // Render a different component or navigate to a different page
         return (
             <div>
                 <h1>Game Over</h1>
                 <p>Your Score: {score}</p>
-                <button onClick={handlePlayAgain}>Play Again</button>
+                <div>
+                    <button className={`px-2 border-2 border-amber-300`} onClick={handlePlayAgain}>Play Again</button>
+                    <button className={`px-2 border-2 border-amber-300`} onClick={handleGoHome}>Home</button>
+                </div>
             </div>
         );
     }

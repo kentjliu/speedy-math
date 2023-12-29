@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import {useState} from 'react';
 
 const LandingPage = ({ onStartGame }) => {
     const [selectedOperations, setSelectedOperations] = useState({
         addition: true,
-        subtraction: false,
+        subtraction: true,
         multiplication: true,
-        division: false,
+        division: true,
     });
 
     const [selectedTime, setSelectedTime] = useState(30);
